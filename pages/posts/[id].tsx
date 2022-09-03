@@ -29,7 +29,6 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
 export const getStaticProps = async (context: GetStaticPropsContext) => {
     const { params } = context;
-    const res = await fetch(`https://jsonplaceholder.typicode.com/posts/${params.id}`);
 
     const emptyPost: Post = {
         title: "Post not Found",
@@ -45,6 +44,10 @@ export const getStaticProps = async (context: GetStaticPropsContext) => {
             }
         }
     }
+
+    const res = await fetch(
+        `https://jsonplaceholder.typicode.com/posts/${params.id}`
+    );
 
     const post: Post = await res.json();
 
