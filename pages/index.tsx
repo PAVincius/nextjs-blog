@@ -52,7 +52,7 @@ export default function Home({
       <Main>
         <BlogTitle>{title}</BlogTitle>
         <List>
-          {posts.map((post) => (
+          {posts.map((post : Post) => (
             <ListItem key={post.id}>
               <PostTitle>{post.title}</PostTitle>
             </ListItem>
