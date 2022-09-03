@@ -39,7 +39,9 @@ const PostTitle = styled.h2`
  
 const title: string = "PAV Blog" 
 
-export default function Home({posts}: InferGetStaticPropsType<typeof getStaticProps> ) {
+export default function Home({
+  posts,
+}: InferGetStaticPropsType<typeof getStaticProps>) {
   return (
     <Container>
       <Head>
@@ -48,10 +50,10 @@ export default function Home({posts}: InferGetStaticPropsType<typeof getStaticPr
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Main>
-        <BlogTitle>PAV blog</BlogTitle>
+        <BlogTitle>{title}</BlogTitle>
         <List>
           {posts.map((post) => (
-            <ListItem key="title" value={post.id}>
+            <ListItem key={post.id}>
               <PostTitle>{post.title}</PostTitle>
             </ListItem>
           ))}
@@ -62,6 +64,7 @@ export default function Home({posts}: InferGetStaticPropsType<typeof getStaticPr
 }
 
 export type Post = {
+  [x: string]: any;
   userId: string;
   id: string;
   title: string;
