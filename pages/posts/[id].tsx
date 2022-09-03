@@ -1,12 +1,18 @@
 import { GetStaticPaths, GetStaticPropsContext, InferGetStaticPropsType } from "next";
 import { Article } from "@components/Article";
 import type { Post } from "../index"
+import Head from "next/head";
 
 // changing to BlogPost to avoid conflict with the Post type
 export default function BlogPost ({post,
 }:InferGetStaticPropsType<typeof getStaticProps>) {
     return (
         <Article>
+            <Head>
+                <title>{post.title}</title>
+                <meta name="description" content={post.title} />
+                <link rel="icon" href="/favicon.ico" />
+            </Head>
             <h1>{post.title}</h1>
             <p>{post.body}</p>
         </Article>
